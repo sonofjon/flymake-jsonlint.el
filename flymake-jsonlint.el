@@ -74,8 +74,8 @@
                  (region (flymake-diag-region code-buffer (1+ (- line start-line)) col))
                  (dx (flymake-make-diagnostic code-buffer (car region) (cdr region)
                                               :error msg)))
-            (add-to-list 'dxs dx)))))
-    dxs))
+            (push dx dxs)))))
+    (nreverse dxs)))
 
 (defun flymake-jsonlint--run-checker (report-fn &rest _args)
   "Run checker using REPORT-FN."
